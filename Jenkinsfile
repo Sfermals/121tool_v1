@@ -50,7 +50,7 @@ pipeline {
         stage('Run Docker container on remote hosts') {
              
             steps {
-                sh "docker run --name sfermals/121tool:latest --add-host="hostmachine:54.251.26.179" dit sfermals/121tool:latest"
+                sh "docker run --name sfermals/121tool:latest --env pass=pass_my --add-host="hostmachine:54.251.26.179" dit sfermals/121tool:latest"
  
             }
         }
