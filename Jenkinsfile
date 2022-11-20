@@ -48,6 +48,7 @@ pipeline {
             }
             }
         stage('Run Docker container on remote hosts') {
+            steps{
             node {
                 def remote = [:]
                 remote.name = 'ubuntu'
@@ -71,4 +72,5 @@ pipeline {
             
         }
     }
+}
 }
