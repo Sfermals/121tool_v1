@@ -52,6 +52,7 @@ pipeline {
             sh 'scp deploy.sh ubuntu@54.251.26.179:~/'
             sh 'ssh ubuntu@54.251.26.179 "chmod +x deploy.sh"'
             sh 'ssh ubuntu@54.251.26.179 ./deploy.sh'
+            sh 'sudo docker run -d -p 3000:3000 sfermals/121tools'
         }
         }
         }   
