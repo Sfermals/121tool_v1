@@ -54,6 +54,7 @@ pipeline {
             sh 'ssh ubuntu@54.251.26.179 ./deploy.sh'
         }
         }
+        }   
     post {
         always {
             echo 'end of pipeline'
@@ -64,5 +65,5 @@ pipeline {
             
         }
     }
-}
+
 }
