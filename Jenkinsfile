@@ -50,10 +50,21 @@ pipeline {
             }
         stage ('Deploy') {
         steps {
-            sh 'scp deploy.sh ubuntu@54.251.26.179:~/'
-            sh 'ssh ubuntu@54.251.26.179 "chmod +x deploy.sh"'
-            sh 'ssh ubuntu@54.251.26.179 ./deploy.sh'
+            sh 'echo "Starting to deploy docker image...."'
+            sh 'ssh ubuntu@54.251.26.179 "docker run -d -p 3000:3000 sfermals/121tools"'
+            
         }
         }
+        }
+    post {
+        always {
+            echo 'end of pipeline'
+            
+            emailext body: "${currentBuild.currentResult}: Job ${env.JOB_NAME} build ${env.BUILD_NUMBER}\n More info at: ${env.BUILD_URL}",
+                recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']],
+                subject: "Jenkins Build ${currentBuild.currentResult}: Job ${env.JOB_NAME}"
+            
         }
     }
+}
+    
