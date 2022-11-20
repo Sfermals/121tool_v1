@@ -48,11 +48,14 @@ pipeline {
             }
             }
         stage('Run Docker container on remote hosts') {
-             
-            steps {
-                sh "docker run --name sfermals/121tool:latest --env pass=pass_my --add-host="hostmachine:54.251.26.179" dit sfermals/121tool:latest"
- 
-            }
+            
+            def dockerrun = 'docker container run -p 3000:3000 -d --name sfermals sfermals/121tools tail -f /dev/null'
+            def docker_image = ' docker image rmi -f sfermals/121tools'
+            sshagent(['dockerhostpassword']) {
+            // some block
+            
+            sh "ssh -o StrictHostKeyChecking=no ubuntu@54.251.26.179 ${docker_image}"
+            sh "ssh -o StrictHostKeyChecking=no ubuntu@54.251.26.179 ${dockerrun}"
         }
     }
     post {
