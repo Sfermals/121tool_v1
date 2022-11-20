@@ -50,7 +50,7 @@ pipeline {
         stage('Run Docker container on remote hosts') {
              
             steps {
-                sh "docker -H ssh://ubuntu@54.251.26.179 sudo run -p 3000:3000 sfermals/121tools:latest"
+                sh "docker -H ssh://ubuntu@54.251.26.179 sudo run --publish 3000:3000 sfermals/121tools:latest"
  
             }
         }
