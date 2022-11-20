@@ -47,21 +47,13 @@ pipeline {
             }
             }
             }
-        stage('Run Docker container on remote hosts') {
-            steps{
-            
-                def remote = [:]
-                remote.name = 'ubuntu'
-                remote.host = '54.251.26.179'
-                remote.allowAnyHosts = true
-                stage('Remote SSH') {
-                    sshCommand remote: remote, command: "ls -lrt"
-                    sshCommand remote: remote, command: "docker -v"
-                    sshCommand remote: remote, command: "sudo docker run -d -p 3000:3000 sfermals/121tools"
-                }
-                
+        stage ('Deploy') {
+        steps {
+            sh 'scp deploy.sh ubuntu@54.251.26.179:~/'
+            sh 'ssh ubuntu@54.251.26.179 "chmod +x deploy.sh"'
+            sh 'ssh ubuntu@54.251.26.179 ./deploy.sh'
         }
-    }
+        }
     post {
         always {
             echo 'end of pipeline'
