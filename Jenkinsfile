@@ -48,13 +48,17 @@ pipeline {
             }
             }
         stage('Run Docker container on remote hosts') {
-            
-            def dockerrun = 'docker container run -p 3000:3000 -d --name sfermals sfermals/121tools tail -f /dev/null'
-            def docker_image = ' docker image rmi -f sfermals/121tools'
-            
-            
-            sh "ssh -o StrictHostKeyChecking=no ubuntu@54.251.26.179 ${docker_image}"
-            sh "ssh -o StrictHostKeyChecking=no ubuntu@54.251.26.179 ${dockerrun}"
+            node {
+                def remote = [:]
+                remote.name = 'ubuntu'
+                remote.host = '54.251.26.179'
+                remote.allowAnyHosts = true
+                stage('Remote SSH') {
+                    sshCommand remote: remote, command: "ls -lrt"
+                    sshCommand remote: remote, command: "docker -v"
+                    sshCommand remote: remote, command: "sudo docker run -d -p 3000:3000 sfermals/121tools"
+                }
+                }
         }
     }
     post {
