@@ -12,7 +12,7 @@ pipeline {
     stages {
         stage('Cloning git') {
       steps {
-        git 'https://github.com/Sfermals/OneToOneTool_V1.git'
+        git 'https://github.com/Sfermals/121tool_v1.git'
       }
     }
 
