@@ -49,7 +49,7 @@ pipeline {
             }
         stage('Run Docker container on remote hosts') {
             steps{
-            node {
+            
                 def remote = [:]
                 remote.name = 'ubuntu'
                 remote.host = '54.251.26.179'
@@ -59,7 +59,7 @@ pipeline {
                     sshCommand remote: remote, command: "docker -v"
                     sshCommand remote: remote, command: "sudo docker run -d -p 3000:3000 sfermals/121tools"
                 }
-                }
+                
         }
     }
     post {
