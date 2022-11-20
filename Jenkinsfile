@@ -1,6 +1,6 @@
 pipeline {
     environment {
-        registry = 'sfermals/121toolr'
+        registry = 'sfermals/121toolrel'
         registryCredential = 'dockerHub'
         dockerImage = ''
     }
