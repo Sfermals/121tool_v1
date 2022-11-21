@@ -32,7 +32,7 @@ ________________________________________________________________________________
 
 Instructions on running the scripts for the task:
 
-1) fork this repository: git@github.com:Sfermals/121tool_v1.git and clone it locally. 
+1) Fork this repository: git@github.com:Sfermals/121tool_v1.git and clone it locally. 
 
 
 
@@ -61,7 +61,7 @@ then save and it will detect our branches from github
 
 4) Configure webhook
 
-github > (repo)Settings >Webhooks / Manage webhook
+*github > (repo)Settings >Webhooks / Manage webhook
 
 Payload URL: <jenkinsServerURL:PORT>/github-webhook/
 Content type: application/json
@@ -102,12 +102,21 @@ datafile
 
 ![Screenshot](s.png)
 
+
+
 ![Screenshot](quest-test.png)
+
+
+
+
+
 
 
 b. The “release” branch should use “Questions.json” as its input datafile
 
 ![Screenshot](r.png)
+
+
 
 ![Screenshot](ques.png)
 
