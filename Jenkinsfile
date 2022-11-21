@@ -5,7 +5,6 @@ pipeline {
     }
     options { 
         disableConcurrentBuilds() 
-        
     }
 
     environment {
