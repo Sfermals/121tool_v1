@@ -1,4 +1,11 @@
 pipeline {
+    triggers {
+    githubPush() 
+    }
+    options { 
+        disableConcurrentBuilds() 
+    }
+
     environment {
         registry = 'sfermals/121toolr'
         registryCredential = 'dockerHub'
@@ -10,12 +17,6 @@ pipeline {
     tools {nodejs "node"}
 
     stages {
-        stage('Cloning git') {
-      steps {
-        git 'https://github.com/Sfermals/121tool_v1.git'
-        
-      }
-    }
 
         stage('Build') {
             steps {
@@ -35,15 +36,11 @@ pipeline {
 
       	    script {
                 dockerImage = docker.build registry + ":$BUILD_NUMBER"
-            }
-            }
-        }
-        stage('Deploy Image') {
-            steps{
-            script {
-            docker.withRegistry( '', registryCredential ) {
-            dockerImage.push("$BUILD_NUMBER")
-            dockerImage.push('latest')
+                
+                //push image to dockerhub
+                docker.withRegistry( '', registryCredential ) {
+                dockerImage.push("$BUILD_NUMBER")
+                dockerImage.push('latest')
             }
             }
             }
