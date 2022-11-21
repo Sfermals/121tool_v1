@@ -1,16 +1,16 @@
 pipeline {
     triggers {
-    githubPush() 
+    githubPush()   //  pipeline triggered on new commits
     }
     options { 
         disableConcurrentBuilds() 
     }
 
     environment {
-        registry = 'sfermals/121toolr'
-        registryCredential = 'dockerHub'
+        registry = 'sfermals/121toolr'      // 1) change according to your repo name 
+        registryCredential = 'dockerHub'           //* here i have added "r" at the end to differentiate release and staging 
         dockerImage = ''
-    }
+    }                                       // 2) change registryCredential = <ID you used in docker credentials>
 
     agent any
 
@@ -49,6 +49,8 @@ pipeline {
         steps {
             sh 'echo "Starting to deploy docker image...."'
             sh 'ssh ubuntu@18.143.190.255 "sudo docker run -d -p 3000:3000 sfermals/121toolr"'
+                                   
+                                                                 // 3) after the ports here: change to repo name
             
         }
         }
