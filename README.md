@@ -34,6 +34,9 @@ Instructions on running the scripts for the task:
 
 1) fork this repository: git@github.com:Sfermals/121tool_v1.git and clone it locally. 
 
+
+
+
 2) Configure credentials for docker in jenkins.
 
 Dashboard >> Manage Jenkins >> Credentials >> System >> Global credentials (unrestricted) >> + Add Credentials
@@ -42,11 +45,17 @@ Dashboard >> Manage Jenkins >> Credentials >> System >> Global credentials (unre
 
 
 
+
+
+
 3) Configure multipipeline in jenkins
 
 ![Screenshot](jenkins1.png)
 
 then save and it will detect our branches from github
+
+
+
 
 
 
@@ -63,12 +72,18 @@ so that commit will trigger thru webhook
 
 
 
+
+
+
+
+
+
 5)Make necessary changes in Jenkinsfile as follows: 
 * can use vs code 
 
-![Screenshot](vs1.jpg)
+![Screenshot](vs1.png)
 
-![Screenshot](vs2.jpg)
+![Screenshot](vs2.png)
 
 save and commit changes.  
 
