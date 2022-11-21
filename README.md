@@ -16,9 +16,12 @@ datafile
 
 b. The “release” branch should use “Questions.json” as its input datafile
 
+![Screenshot](r.png)
+
 ![Screenshot](ques.png)
 
 CI/CD ran in jenkins:
 
 https://sfermals.app/
+
 
