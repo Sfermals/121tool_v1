@@ -127,7 +127,7 @@ https://sfermals.app/
 
 Improvement can be done: 
 
-- fix trigger issue upon commiting
+- fix issue triggering more then one time at times upon commiting
 - run test intergrated with sonarqube to gather code vulnerability and code smells
 - integrate into pipeline code, script to stop previously run container on same port before running new ones
 
