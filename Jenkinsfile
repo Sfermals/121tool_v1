@@ -55,6 +55,7 @@ pipeline {
         stage ('Deploy') {
         steps {
             sh 'echo "checking port if port allocated"'
+            sh 'pwd'
 
             sh 'scp dockerStop.sh ubuntu@54.251.26.179:~/'
             sh 'ssh ubuntu@54.251.26.179 "chmod +x dockerStop.sh"'
