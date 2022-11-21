@@ -51,7 +51,7 @@ pipeline {
         stage ('Deploy') {
         steps {
             sh 'echo "Starting to deploy docker image...."'
-            sh 'ssh ubuntu@119.74.42.221 "sudo docker run -d -p 3000:3000 sfermals/121toolr"'
+            sh 'ssh ubuntu@18.143.190.255 "sudo docker run -d -p 3000:3000 sfermals/121toolr"'
             
         }
         }
