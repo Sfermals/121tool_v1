@@ -25,3 +25,23 @@ CI/CD ran in jenkins:
 https://sfermals.app/
 
 
+Improvement can be done: 
+
+- fix trigger issue upon commiting
+- run test intergrated with sonarqube to gather code vulnerability and code smells
+- integrate into pipeline code, script to stop previously run container on same port before running new ones
+
+exp: 
+
+#!/usr/bin/env bash
+
+for id in $(docker ps -q)
+do
+    if [[ $(docker port "${id}") == *"${1}"* ]]; then
+        echo "stopping container ${id}"
+        docker stop "${id}"
+    fi
+done
+
+
+- To be continue as more and more experience and knowledge learned. Thanks.
