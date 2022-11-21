@@ -1,6 +1,6 @@
 pipeline {
     environment {
-        registry = 'sfermals/121toolrel'
+        registry = 'sfermals/121toolr'
         registryCredential = 'dockerHub'
         dockerImage = ''
     }
@@ -51,7 +51,7 @@ pipeline {
         stage ('Deploy') {
         steps {
             sh 'echo "Starting to deploy docker image...."'
-            sh 'ssh ubuntu@54.251.26.179 "docker run -d -p 3000:3000 sfermals/121toolrel"'
+            sh 'ssh ubuntu@54.251.26.179 "docker run -d -p 3000:3000 sfermals/121toolr"'
             
         }
         }
