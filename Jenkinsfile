@@ -2,6 +2,7 @@ pipeline {
 
     triggers {
     githubPush() 
+    options { disableConcurrentBuilds() }
     }
 
     environment {
