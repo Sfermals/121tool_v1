@@ -59,7 +59,7 @@ pipeline {
 
             sh 'scp dockerStop.sh ubuntu@54.251.26.179:~/'
             sh 'ssh ubuntu@54.251.26.179 "chmod +x dockerStop.sh"'
-            sh 'ssh ubuntu@54.251.26.179 "./dockerStop.sh"'
+            sh 'ssh ubuntu@54.251.26.179 ./dockerStop.sh'
 
             sh 'echo "Starting to deploy docker image...."'
             sh 'ssh ubuntu@54.251.26.179 "docker run -d -p 3000:3000 sfermals/121tools"'

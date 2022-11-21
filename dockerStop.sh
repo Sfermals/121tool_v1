@@ -1,4 +1,3 @@
-#!/usr/bin/env bash
 
 for id in $(docker ps -q)
 do
