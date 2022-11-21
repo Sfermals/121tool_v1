@@ -18,11 +18,6 @@ pipeline {
     tools {nodejs "node"}
 
     stages {
-        stage('Cloning git') {
-      steps {
-        git 'https://github.com/Sfermals/121TOOL_v1.git'
-      }
-    }
 
         stage('Build') {
             steps {
